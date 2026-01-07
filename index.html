@@ -16,6 +16,7 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <!-- Google Fonts -->
+    <!-- Restored the lighter weights (300) for that sleek look -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
@@ -29,7 +30,7 @@
         }
 
         .glass-panel {
-          background: rgba(255, 255, 255, 0.03);
+          background: rgba(255, 255, 255, 0.03); /* Reverted to slightly more transparent/sleek */
           backdrop-filter: blur(10px);
           border: 1px solid rgba(255, 255, 255, 0.05);
         }
@@ -62,7 +63,6 @@
         const { useState, useEffect } = React;
 
         // --- Safe Icon Component ---
-        // We define icons inline to avoid dependency issues with Lucide CDN in React.
         const Icon = ({ children, size = 24, className, onClick, fill = "none", stroke = "currentColor", ...rest }) => (
             <svg 
                 xmlns="http://www.w3.org/2000/svg" 
@@ -98,13 +98,10 @@
             const [isPlaying, setIsPlaying] = useState(false);
             const [scrollPos, setScrollPos] = useState(0);
             const [email, setEmail] = useState('');
-            
-            // Modal & Overlay State
             const [modalOpen, setModalOpen] = useState(false);
             const [showCollage, setShowCollage] = useState(false);
             const [modalContent, setModalContent] = useState({ title: '', message: '', type: 'info' });
 
-            // Parallax / Scroll listener
             useEffect(() => {
                 const handleScroll = () => setScrollPos(window.scrollY);
                 window.addEventListener('scroll', handleScroll);
@@ -178,54 +175,12 @@
             ];
 
             const billionaires = [
-                { 
-                    name: "The Petro-King", 
-                    location: "Mumbai, MH", 
-                    netWorth: "$116B", 
-                    industry: "Energy & Telecom", 
-                    img: "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800&q=80", 
-                    status: "Active Target" 
-                },
-                { 
-                    name: "The Port Baron", 
-                    location: "Ahmedabad, GJ", 
-                    netWorth: "$84B", 
-                    industry: "Logistics & Energy", 
-                    img: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80", 
-                    status: "Under Surveillance" 
-                },
-                { 
-                    name: "The Steel Magnate", 
-                    location: "London / Kolkata", 
-                    netWorth: "$18B", 
-                    industry: "Metals", 
-                    img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&q=80", 
-                    status: "Analyzed" 
-                },
-                { 
-                    name: "The Vaccine Lord", 
-                    location: "Pune, MH", 
-                    netWorth: "$14B", 
-                    industry: "Pharma", 
-                    img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=80", 
-                    status: "Pending" 
-                },
-                { 
-                    name: "The Tech Titan", 
-                    location: "Bangalore, KA", 
-                    netWorth: "$28B", 
-                    industry: "IT Services", 
-                    img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80", 
-                    status: "Analyzed" 
-                },
-                { 
-                    name: "The Retail Queen", 
-                    location: "Mumbai, MH", 
-                    netWorth: "$6B", 
-                    industry: "Fashion & Beauty", 
-                    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80", 
-                    status: "Active Target" 
-                },
+                { name: "The Petro-King", location: "Mumbai, MH", netWorth: "$116B", industry: "Energy & Telecom", img: "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800&q=80", status: "Active Target" },
+                { name: "The Port Baron", location: "Ahmedabad, GJ", netWorth: "$84B", industry: "Logistics & Energy", img: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80", status: "Under Surveillance" },
+                { name: "The Steel Magnate", location: "London / Kolkata", netWorth: "$18B", industry: "Metals", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&q=80", status: "Analyzed" },
+                { name: "The Vaccine Lord", location: "Pune, MH", netWorth: "$14B", industry: "Pharma", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=80", status: "Pending" },
+                { name: "The Tech Titan", location: "Bangalore, KA", netWorth: "$28B", industry: "IT Services", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80", status: "Analyzed" },
+                { name: "The Retail Queen", location: "Mumbai, MH", netWorth: "$6B", industry: "Fashion & Beauty", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80", status: "Active Target" },
             ];
 
             return (
@@ -356,7 +311,7 @@
                             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] font-serif-display font-bold opacity-[0.03] whitespace-nowrap pointer-events-none select-none"
                             style={{ transform: `translate(-50%, calc(-50% + ${scrollPos * 0.2}px))` }}
                         >
-                            BILLIONAIRES
+                            D       E       S       T       I       N       Y
                         </div>
 
                         <div className="z-10 text-center max-w-6xl">
@@ -464,25 +419,25 @@
                             {/* Right: The Archive / Data */}
                             <div className="lg:col-span-7 space-y-2">
                                 
-                                <div id="about-section" className="mb-12 border-b border-white/10 pb-8 animate-in fade-in slide-in-from-right duration-700">
-                                    <div className="flex items-center justify-between mb-4">
+                                <div id="about-section" className="mb-16 border-b border-white/10 pb-12 animate-in fade-in slide-in-from-right duration-700">
+                                    <div className="flex items-center justify-between mb-6">
                                         <div className="flex items-center gap-2">
-                                            <Fingerprint size={16} className="text-[#D4AF37]" />
-                                            <h3 className="font-sans-clean text-sm uppercase tracking-[0.2em] text-[#D4AF37]">The Mission</h3>
+                                            <Fingerprint size={20} className="text-[#D4AF37]" />
+                                            <h3 className="font-sans-clean text-base uppercase tracking-[0.2em] text-[#D4AF37]">The Mission</h3>
                                         </div>
-                                        <div className="text-[10px] text-gray-500 font-sans-clean uppercase tracking-widest border border-white/10 px-2 py-1 rounded">Classified // Eyes Only</div>
+                                        <div className="text-xs text-gray-400 font-sans-clean uppercase tracking-widest border border-white/10 px-3 py-1.5 rounded">Classified // Eyes Only</div>
                                     </div>
-                                    <p className="font-serif-display text-xl md:text-2xl text-gray-200 leading-relaxed mb-6">
+                                    <p className="font-serif-display text-3xl md:text-5xl text-white leading-tight mb-8">
                                         THEDESIBILLIONAIRES studies power, money, and ambition <span className="text-[#D4AF37] italic">without the noise.</span>
                                     </p>
-                                    <div className="font-sans-clean text-sm text-gray-400 leading-relaxed space-y-6 border-l-2 border-[#D4AF37] pl-6 bg-white/[0.01] py-4">
+                                    <div className="font-sans-clean font-light text-lg md:text-xl text-gray-300 leading-relaxed space-y-8 border-l-4 border-[#D4AF37] pl-8 bg-white/[0.03] py-8 pr-6">
                                         <p>
                                             We’re two anonymous girls decoding how desi-origin billionaires went from overlooked beginnings to global dominance. Not interviews. Not hype. Not worship. Just deep dives into how wealth is actually built—decisions, risks, systems, timing, failures, and the uncomfortable truths people usually skip.
                                         </p>
                                         
                                         <div>
-                                            <p className="text-gray-300 font-bold mb-2 uppercase text-xs tracking-widest">Every episode breaks down:</p>
-                                            <ul className="list-none space-y-1 text-gray-400">
+                                            <p className="text-gray-200 font-bold mb-4 uppercase text-sm tracking-widest">Every episode breaks down:</p>
+                                            <ul className="list-none space-y-3 text-gray-300">
                                                 <li>• Where the money really came from</li>
                                                 <li>• What they did differently (and repeatedly)</li>
                                                 <li>• The leverage they understood early</li>
@@ -491,12 +446,12 @@
                                         </div>
 
                                         <p>
-                                            This isn’t motivation. <span className="text-white">This is pattern recognition.</span> We treat billionaire stories like case studies not fairy tales. Because behind every fortune is a roadmap, and roadmaps can be studied.
+                                            This isn’t motivation. <span className="text-white font-medium">This is pattern recognition.</span> We treat billionaire stories like case studies not fairy tales. Because behind every fortune is a roadmap, and roadmaps can be studied.
                                         </p>
 
-                                        <div className="pt-2">
-                                            <p className="italic text-[#D4AF37]">Anonymous by choice. Curious by nature.</p>
-                                            <p className="text-xs mt-1 uppercase tracking-wider text-gray-500">If you’re here for shortcuts, this isn’t it. If you’re here to understand the game, welcome.</p>
+                                        <div className="pt-4">
+                                            <p className="italic text-[#D4AF37] text-xl">Anonymous by choice. Curious by nature.</p>
+                                            <p className="text-sm mt-3 uppercase tracking-wider text-gray-500">If you’re here for shortcuts, this isn’t it. If you’re here to understand the game, welcome.</p>
                                         </div>
                                     </div>
                                 </div>
